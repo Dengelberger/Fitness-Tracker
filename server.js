@@ -14,8 +14,16 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 //DATABASE CONNECTION WITH CORRECTIONS FOR ERRORS:
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
-
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/FitnessTracker',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
+  
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
     //NOT CONNECTED
